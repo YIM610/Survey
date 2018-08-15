@@ -1,0 +1,50 @@
+/*
+ * @Author: YIM610 
+ * @Date: 2018-08-15 19:54:12 
+ * @Last Modified by: YIM610
+ * @Last Modified time: 2018-08-15 20:38:30
+ */
+
+@import '../../styles/variables.scss';
+@import '../../styles/util/flex-center';
+@import '../../styles/util/size';
+
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: $font-size-base;
+    color: $white;
+    background: $orange;
+    display: flex;
+    align-items: center;
+    
+    .title {
+        margin: 0 3em 0 12.5%;
+    }
+
+    .title:before {
+        @include flex-center;
+        @include size(1em, 1em);
+        content: '?';
+        float: left;
+        color: $orange;
+        background: $white;
+        border-radius: .5em;
+        margin-right: .2em;
+    }
+
+    .link {
+        text-decoration: none;
+        color: $white;
+        .tabs {
+            @include flex-center;
+            @include size(6em, 3.125em);
+            font-size: 80%;
+            &:hover {
+                background: $orange linear-gradient(transparent, rgba(255, 255, 255, .1));
+            }
+        }
+    }
+}

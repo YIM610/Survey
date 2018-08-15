@@ -24,7 +24,11 @@ const mapDispatchToProps = dispatch => ({
         )
 });
 
-@connect(mapStateToProps, mapDispatchToProps)
+const Home = () => (
+    <div>'Home'</div>
+)
+
+/*@connect(mapStateToProps, mapDispatchToProps)
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -226,6 +230,6 @@ class Home extends Component {
             </div>
         )
     }
-}
+}*/
 
 export default Home;

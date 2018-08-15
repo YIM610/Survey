@@ -2,10 +2,11 @@
  * Created by YIM610 on 2018/6/3
  **/
 
-import React from "react";
-import PropTypes from "prop-types";
-import Header from "../Header/Header";
-import Main from "../Main/Main"
+import React from 'react';
+import PropTypes from 'prop-types';
+import Header from '../Header/Header';
+import Main from '../Main/Main'
+import '../../styles/reset.scss'
 
 function App({children}) {
     return (
