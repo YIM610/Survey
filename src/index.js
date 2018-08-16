@@ -3,20 +3,26 @@
  **/
 
 
-import React from "react";
-import { render } from "react-dom";
-import { Route, Switch } from "react-router";
-import { HashRouter } from "react-router-dom";
-import { App, Home, Edit, Show, Fill } from "./containers";
+import React from 'react';
+import { render } from 'react-dom';
+import { Route } from 'react-router';
+import { HashRouter } from 'react-router-dom';
+import { App, Home, Edit, Show, Fill } from './containers';
+import { Provider } from 'react-redux';
+import genStore from './store/genStore';
+
+const store = genStore();
 
 render(
-    <HashRouter>
-        <App>
-            <Route exact component={Home} />
-            <Route path="/edit" component={Edit} />
-            <Route path="/fill" component={Fill} />
-            <Route path="/show" component={Show} />
-        </App>
-    </HashRouter>,
-    document.getElementById("root")
+    <Provider store={store}>
+        <HashRouter>
+            <App>
+                <Route exact component={Home} />
+                <Route path='/edit' component={Edit} />
+                <Route path='/fill' component={Fill} />
+                <Route path='/show' component={Show} />
+            </App>
+        </HashRouter>
+    </Provider>,
+    document.getElementById('root')
 );

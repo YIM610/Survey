@@ -1,0 +1,32 @@
+/*
+ * @Author: YIM610 
+ * @Date: 2018-08-16 17:59:24 
+ * @Last Modified by: YIM610
+ * @Last Modified time: 2018-08-16 18:16:59
+ */
+
+@import '../../styles/util/flex-center';
+@import '../../styles/util/size';
+@import '../../styles/variables';
+@import '../../styles/util/iconfont';
+
+.wrap {
+    @include flex-center;
+    margin: 6em auto;
+
+    .link {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .addBtn {
+        @include flex-center;
+        @include size(9em, 2.5em);
+        border-radius: .3em;
+        color: $white;
+        background: $orange linear-gradient(rgba(255, 255, 255, .4), transparent);
+        &::before {
+            @include iconfont($add, 1.5em, .8em);
+        }
+    }
+}

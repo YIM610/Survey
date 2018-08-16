@@ -1,0 +1,18 @@
+/*
+ * @Author: YIM610 
+ * @Date: 2018-08-16 20:13:59 
+ * @Last Modified by: YIM610
+ * @Last Modified time: 2018-08-16 20:36:46
+ */
+@import '../../styles/variables';
+
+.app::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $background-z-index;
+    background: $gray-lighter;
+}

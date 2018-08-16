@@ -5,12 +5,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
-import Main from '../Main/Main'
-import '../../styles/reset.scss'
+import Main from '../Main/Main';
+import styles from './APP.scss';
+import '../../styles/reset.scss';
+
 
 function App({children}) {
     return (
-        <div>
+        <div className={styles.app}>
             <Header />
             <Main>
                 {children}

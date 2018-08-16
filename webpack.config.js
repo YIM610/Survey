@@ -19,7 +19,8 @@ module.exports = {
                 loader: "babel-loader",
                 exclude: /node_modules/,
                 query: {
-                    presets: ["es2015", "react"]
+                    presets: ["es2015", "react", "stage-0"],
+                    plugins: ["transform-decorators-legacy"]
                 }
             },
             {
@@ -36,5 +37,8 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, "./dist")
     },
-    mode: "development"
+    mode: "development",
+    resolve: {
+        extensions: ['.js', '.jsx','.json'],
+    }
 };

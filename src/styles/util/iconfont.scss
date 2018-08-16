@@ -1,0 +1,17 @@
+/*
+ * @Author: YIM610 
+ * @Date: 2018-08-16 18:11:00 
+ * @Last Modified by: YIM610
+ * @Last Modified time: 2018-08-16 18:13:48
+ */
+
+@import '../variables.scss';
+
+@mixin iconfont($content, $size: $font-size-base, $padding-right: 0, $padding-left: 0) {
+    content: $content;
+    padding-left: $padding-left;
+    padding-right: $padding-right;
+    font-family: 'iconfont' !important;
+    font-size: $size;
+    font-style: normal;
+}

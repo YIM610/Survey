@@ -2,12 +2,13 @@
  * Created by YIM610 on 2018/6/3
  **/
 
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './Main.scss';
 
 function Main({ children }) {
     return(
-        <div>
+        <div className={styles.main}>
             {children}
         </div>
     );

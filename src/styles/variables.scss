@@ -2,13 +2,23 @@
  * @Author: YIM610 
  * @Date: 2018-08-15 18:43:08 
  * @Last Modified by: YIM610
- * @Last Modified time: 2018-08-15 20:27:13
+ * @Last Modified time: 2018-08-16 20:37:18
  */
 
 $font-size-base: 20px;
+
+$background-z-index: -1;
 
 $small-page-max-width: 480px !default;
 $medium-page-max-width: 960px;
 
  $orange: #ee7419;
  $white: #fff;
+ $gray-base: #000;
+ $gray-darker: lighten($gray-base, 13.5%);
+ $gray-dark: lighten($gray-base, 33.5%);
+ $gray: lighten($gray-base, 53.3%);
+ $gray-light: lighten($gray-base, 80%);
+ $gray-lighter: lighten($gray-base, 93.3%);
+
+ $add: '\e600';
