@@ -1,0 +1,156 @@
+/*
+ * @Author: YIM610 
+ * @Date: 2018-08-17 14:09:32 
+ * @Last Modified by: YIM610
+ * @Last Modified time: 2018-08-24 18:42:13
+ */
+
+ @import '../../styles/variables';
+ @import '../../styles/util/flex-center';
+ @import '../../styles/util/size';
+ @import '../../styles/util/iconfont';
+
+ .title,
+ .titleInput {
+     @include flex-center;
+     @include size(90%, 3em);
+     margin: 1em auto 1.5em;
+     &:hover {
+         background: $orange-light;
+     }
+ }
+
+.titleInput {
+    border: none;
+    text-align: center;
+}
+
+.line {
+    width: 92%;
+    background: $gray-light;
+    margin: 0 auto;
+}
+
+.add {
+    width: 92%;
+    margin: 1.5em auto;
+    .addBtn {
+        @include flex-center;
+        height: 4em;
+        border: 1px solid $gray-light;
+        font-size: 80%;
+        color: $gray;
+        background: $gray-lighter;
+        cursor: pointer;
+        &::before {
+            @include iconfont($add, 1.1em, 1em);
+        }
+    }
+    .typeWrap {
+        @include flex-center;
+        height: 5em;
+        border: 1px solid $gray-light;
+        border-bottom: none;
+        font-size: 80%;
+        .type {
+            @include flex-center;
+            @include size(6em, 2em);
+            background: $gray-lighter;
+            border-radius: .2em;
+            color: $gray;
+            margin: 0 1em;
+            &:hover {
+                color: $white;
+                background: $orange;
+                cursor: pointer;
+            }
+            @media screen and (max-width: $small-page-max-width) {
+                margin: 0 .2em;
+            }
+        }
+        .radio::before {
+            @include iconfont($radio, .8em, .8em);
+        }
+        .checkbox::before {
+            @include iconfont($checkbox, .8em, .8em);
+        }
+        .text::before {
+            @include iconfont($text, .8em, .8em);
+        }
+    }
+    .enter {
+        height: 0;
+        transform: scale3d(1, 0, 1);
+        opacity: 0;
+        transition: height $edit-transition-timeout, transform $edit-transition-timeout, opacity $edit-transition-timeout;
+    }
+    .enter.enterActive {
+        height: 5em;
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+    }
+    .leave {
+        height: 5em;
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        transition: height $edit-transition-timeout, transform $edit-transition-timeout, opacity $edit-transition-timeout;
+    }
+    .leave.leaveActive {
+        height: 0;
+        transform: scale3d(1, 0, 1);
+        opacity: 0;
+    }
+}
+
+.questionWrap {
+    width: 92%;
+    margin: 1.5em auto;
+    font-size: 80%;
+    .question {
+        line-height: 1.5;
+        padding: 1em 1.5em;
+        &:hover {
+            background: $orange-light;
+        }
+        .caption {
+            font-weight: 700;
+        }
+        .editQuestionContent,
+        .questionContent {
+            @include size(calc(100% - 5em), calc(2em - 4px));
+            display: inline-block;
+            margin-left: 1em;
+        }
+        .editQuestionContent {
+            border: none;
+            box-sizing: border-box;
+            background: inherit;
+        }
+        .optionWrap {
+            padding-left: 2em;
+            .radioOptionIcon::before {
+                @include iconfont($radio-option, .8em, 1em);
+            }
+            .checkboxOptionIcon::before {
+                @include iconfont($checkbox-option, .8em, 1em);
+            }
+            .removeOptionBtn {
+                display: none;
+                margin-left: .2em;
+                &::before {
+                    @include iconfont($remove, .8em, 1em);
+                }
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            &:hover {
+                .removeOptionBtn {
+                    display: inline;
+                    color: $red;
+                }
+            }
+        }
+    }
+    
+}

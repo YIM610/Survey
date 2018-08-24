@@ -2,36 +2,77 @@
  * @Author: YIM610 
  * @Date: 2018-08-16 11:23:41 
  * @Last Modified by: YIM610
- * @Last Modified time: 2018-08-16 17:43:37
+ * @Last Modified time: 2018-08-24 19:32:14
  */
 
- import { handleActions } from 'redux-actions';
- import * as Types from '../constants/QuestionnaireActionTypes';
+import { handleActions } from 'redux-actions';
+import * as Types from '../constants/QuestionnaireActionTypes';
+import { RADIO, CHECKBOX, TEXT } from '../constants/QuestionTypes';
 
-/* const initialEditing = {
+const list = localStorage.list ? JSON.parse(localStorage.list) : [];
+const initialEditing = {
      questionnaire: -1,
      title: '这里是标题',
-     time: 0,
-     order: 0,
      questions: [],
      option: -1,
-     text: { typing: false, content: ''},
-     data: []
+     type: false,
+     question: -1,
+     text: { typing: false, content: '' }
  };
 
  const initialState = {
      list,
-     editing: cloneObject(initialEditing)
- };*/
-
- const initialState = {
-     test: 'questionnaires'
+     editing: initialEditing
  };
 
  const questionnaires = handleActions({
-    ['test'](state, action) {
-        return state;
+    [Types.EDIT_TEXT](state, action) {
+        const { editing } = state;
+        const { content, question, option } = action.payload;
+        if(question !== -1 && option !== -1 && editing.questions[question].type === TEXT) {
+            editing.questions[question].content = content;
+            return Object.assign({}, state, { editing });
+        }
+        return Object.assign({}, state, { editing: { ...editing, question, option, text: { typing: true, content } } });
+    },
+    [Types.SAVE_TEXT](state, action) {
+        debugger;
+        const { editing } = state;
+        const { questionnaire, question, option } = editing;
+        const content = action.payload;
+        switch(true) {
+            case question === -1 : editing.title = content; break;
+            case option === -1: editing.questions[question].content = content;
+            default: editing.questions[question].options[option] = content;
+        }
+        return Object.assign({}, state, { editing: { ...editing, question: -1, option: -1, text: {typing: false, content: '' } } });
+    },
+    [Types.SHOW_TYPE](state, action) {
+        const { editing } = state;
+        const type = !editing.type;
+        return Object.assign({}, state, { editing: { ...editing, type }});
+    },
+    [Types.ADD_QUESTION](state, action) {
+        const { editing } = state;
+        const type = action.payload;
+        let question;
+        switch(type) {
+            case RADIO: question = { type, content: '单选题', options: ['选项1', '选项2'] }; break;
+            case CHECKBOX: question = { type, content: '多选题', options: ['选项1', '选项2', '选项3', '选项4'] }; break;
+            case TEXT: question = { type, content: '', isRequired: false }; break;
+            default: question = {};
+        }
+        editing.questions.push(question);
+        return Object.assign({}, state, { editing });
+    },
+    [Types.REMOVE_OPTION](state, action) {
+        debugger;
+        const { editing } = state;
+        const { question, option } = action.payload;
+        let questions = editing.questions;
+        questions[question].options.splice(option, 1);
+        return Object.assign({}, state, { editing: { ...editing ,question: -1, option: -1, questions}});
     }
- }, {});
+ }, initialState);
 
  export default questionnaires;

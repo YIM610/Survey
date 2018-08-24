@@ -2,7 +2,7 @@
  * @Author: YIM610 
  * @Date: 2018-08-16 20:09:57 
  * @Last Modified by: YIM610
- * @Last Modified time: 2018-08-16 20:49:07
+ * @Last Modified time: 2018-08-17 11:26:47
  */
  @import '../../styles/variables';
  @import '../../styles/util/size';
@@ -15,6 +15,5 @@
    background: $white;
    font-size: $font-size-base;
    border-radius: .3em;
-   box-shadow: 0 .05em .25em rgba(0, 0, 0, .5);
-   //box-shadow: .2em .2em .5em rgba(0, 0, 0, .1);
+   box-shadow: 0 .1em .5em rgba(0, 0, 0, .1);
 }

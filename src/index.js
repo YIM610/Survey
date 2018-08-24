@@ -17,7 +17,7 @@ render(
     <Provider store={store}>
         <HashRouter>
             <App>
-                <Route exact component={Home} />
+                <Route path='/' exact component={Home} />
                 <Route path='/edit' component={Edit} />
                 <Route path='/fill' component={Fill} />
                 <Route path='/show' component={Show} />

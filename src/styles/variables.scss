@@ -2,7 +2,7 @@
  * @Author: YIM610 
  * @Date: 2018-08-15 18:43:08 
  * @Last Modified by: YIM610
- * @Last Modified time: 2018-08-16 20:37:18
+ * @Last Modified time: 2018-08-24 18:27:57
  */
 
 $font-size-base: 20px;
@@ -12,13 +12,25 @@ $background-z-index: -1;
 $small-page-max-width: 480px !default;
 $medium-page-max-width: 960px;
 
- $orange: #ee7419;
- $white: #fff;
- $gray-base: #000;
- $gray-darker: lighten($gray-base, 13.5%);
- $gray-dark: lighten($gray-base, 33.5%);
- $gray: lighten($gray-base, 53.3%);
- $gray-light: lighten($gray-base, 80%);
- $gray-lighter: lighten($gray-base, 93.3%);
+$orange: #ee7419;
+$orange-light: #fef1e8;
+$white: #fff;
+$gray-base: #000;
+$gray-darker: lighten($gray-base, 13.5%);
+$gray-dark: lighten($gray-base, 33.5%);
+$gray: lighten($gray-base, 53.3%);
+$gray-light: lighten($gray-base, 80%);
+$gray-lighter: lighten($gray-base, 93.3%);
+$red: #f00;
 
- $add: '\e600';
+$add: '\e600';
+$radio: '\e601';
+$checkbox: '\e602';
+$text: '\e603';
+$remove: '\e606';
+
+
+$edit-transition-timeout: .3s;
+
+$radio-option: '\e604';
+$checkbox-option: '\e605';
