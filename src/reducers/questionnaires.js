@@ -2,7 +2,7 @@
  * @Author: YIM610 
  * @Date: 2018-08-16 11:23:41 
  * @Last Modified by: YIM610
- * @Last Modified time: 2018-08-24 19:32:14
+ * @Last Modified time: 2018-08-27 16:29:24
  */
 
 import { handleActions } from 'redux-actions';
@@ -13,6 +13,8 @@ const list = localStorage.list ? JSON.parse(localStorage.list) : [];
 const initialEditing = {
      questionnaire: -1,
      title: '这里是标题',
+     time: 0,
+     order: 0,
      questions: [],
      option: -1,
      type: false,
@@ -72,6 +74,24 @@ const initialEditing = {
         let questions = editing.questions;
         questions[question].options.splice(option, 1);
         return Object.assign({}, state, { editing: { ...editing ,question: -1, option: -1, questions}});
+    },
+    [Types.TOGGLE_REQUIRE](state, action) {
+        const question = action.payload;
+        let { editing } = state;
+        editing.questions[question].isRequired = !editing.questions[question].isRequired;
+        return Object.assign({}, state, { editing });
+    },
+    [Types.ADD_OPTION](state, action) {
+        const question = action.payload;
+        const { editing } = state;
+        editing.questions[question].options.push(`选项${editing.questions[question].options.length + 1}`)
+        return Object.assign({}, state, { editing });
+    },
+    [Types.SAVE_TIME](state, action) {
+        const { editing } = state;
+        const { year, month, date } = action.payload;
+        editing.time = new Date(year, month - 1, date).getTime();
+        return Object.assign({}, state, { editing });
     }
  }, initialState);
 

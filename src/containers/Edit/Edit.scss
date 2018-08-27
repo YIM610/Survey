@@ -2,13 +2,14 @@
  * @Author: YIM610 
  * @Date: 2018-08-17 14:09:32 
  * @Last Modified by: YIM610
- * @Last Modified time: 2018-08-24 18:42:13
+ * @Last Modified time: 2018-08-27 18:10:31
  */
 
  @import '../../styles/variables';
  @import '../../styles/util/flex-center';
  @import '../../styles/util/size';
  @import '../../styles/util/iconfont';
+ @import '../../styles/util/button';
 
  .title,
  .titleInput {
@@ -127,7 +128,7 @@
             background: inherit;
         }
         .optionWrap {
-            padding-left: 2em;
+            padding-left: 2.5em;
             .radioOptionIcon::before {
                 @include iconfont($radio-option, .8em, 1em);
             }
@@ -151,6 +152,70 @@
                 }
             }
         }
+        .addOptionBtn {
+            @include flex-center;
+            @include size(calc(100% - 4.8em - 2px), calc(1.5em - 4px));
+            margin: .25em auto;
+            &::before {
+                @include iconfont($add, .8em);
+                visibility: hidden;
+            }
+            &:hover {
+                cursor: pointer;
+                margin: calc(.25em - 1px) 2.4em;
+                border: 1px dashed $gray;
+                &::before {
+                    visibility: visible;
+                }
+            }
+        }
+        .text {
+            @include size(calc(100% - 4.8em), 5em);
+            margin: .25em 0 0 2.4em;
+            resize: none;
+            padding: .25em;
+        }
+        .required,
+        .notRequired {
+            width: 8em;
+            margin-left: 2.4em;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .required {
+            &::before {
+                @include iconfont($checkbox, .8em, 1em);
+            }
+        }
+        .notRequired {
+            &::before {
+                @include iconfont($checkbox-option, .8em, 1em);
+            }
+        }
     }
-    
+}
+
+.footer {
+    margin-top: 2em;
+    font-size: 80%;
+    text-align: center;
+    color: $gray;
+    .dateWrap {
+        position: relative;
+        display: inline-block;
+        margin-right: 15%;
+        line-height: 1.5;
+    }
+    @media screen and (max-width: $medium-page-max-width) {
+        .dateWrap {
+            display: block;
+            margin: 0 auto 1em;
+        }
+    }
+    .btn {
+        @include button;
+        display: inline-block;
+        margin: 0 .6em;
+    }
 }

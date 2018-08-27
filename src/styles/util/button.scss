@@ -1,0 +1,23 @@
+/*
+ * @Author: YIM610 
+ * @Date: 2018-08-27 18:06:24 
+ * @Last Modified by: YIM610
+ * @Last Modified time: 2018-08-27 18:08:30
+ */
+@import '../variables.scss';
+@import './size.scss';
+
+@mixin button {
+    @include size(6em, 1.8em);
+    border: 1px solid $gray;
+    border-radius: .2em;
+    box-shadow: 0 .05em .25em rgba(0, 0, 0, .5);
+    color: inherit;
+    cursor: pointer;
+    background: $white;
+    &:hover {
+        border-color: $orange;
+        color: $white;
+        background: $orange;
+    }
+}

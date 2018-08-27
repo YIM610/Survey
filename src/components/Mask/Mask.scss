@@ -1,0 +1,35 @@
+/*
+ * @Author: YIM610 
+ * @Date: 2018-08-27 16:03:20 
+ * @Last Modified by: YIM610
+ * @Last Modified time: 2018-08-27 16:07:32
+ */
+@import '../../styles/variables.scss';
+
+.mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $mask-z-index;
+    background: rgba(0, 0, 0, .4);
+}
+
+.enter {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.enter .enterActive {
+    opacity: 1;
+}
+
+.leave {
+    opacity: 1;
+    transition: opacity .3s;
+}
+
+.leave .leaveActive {
+    opacity: 0;
+}

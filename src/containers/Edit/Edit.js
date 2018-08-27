@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import styles from './Edit.scss';
-import { Input } from '../../components';
+import { Input, Calendar, Dialog } from '../../components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -38,6 +38,10 @@ class Edit extends Component {
         this.handleShowType = this.handleShowType.bind(this);
         this.handleAddQuestion = this.handleAddQuestion.bind(this);
         this.handleRemoveOption = this.handleRemoveOption.bind(this);
+        this.handleToggleRequire = this.handleToggleRequire.bind(this);
+        this.handleAddOption = this.handleAddOption.bind(this);
+        this.handleSaveQuestionnaire = this.handleSaveQuestionnaire.bind(this);
+        this.handleRealeaseQuestionnaire = this.handleRealeaseQuestionnaire.bind(this);
     }
 
     handleTextEdit(question, option, content) {
@@ -59,6 +63,37 @@ class Edit extends Component {
     handleRemoveOption(question, option) {
         const { removeOption } = this.props.actions;
         return e => removeOption(question, option);
+    }
+
+    handleToggleRequire(question) {
+        const { toggleRequire } = this.props.actions;
+        return e => toggleRequire(question);
+    }
+
+    handleAddOption(question) {
+        const { addOption } = this.props.actions;
+        return e => addOption(question);
+    }
+
+    handleSaveQuestionnaire() {
+
+    }
+
+    handleRealeaseQuestionnaire() {
+
+    }
+
+    renderCalendar() {
+        const { questionnaires: { editing: { time } }, calendar, actions } = this.props;
+        const now = new Date(),[year, month, date] = [now.getFullYear(), now.getMonth() + 1, now.getDate()];
+        return (<Calendar
+            calendar={calendar}
+            actions={actions}
+            begin = {{year, month, date}}
+            end={{year: 2270, month: 11, date: 28}}
+            current={{year, month, date}}
+            time={time}
+        />);
     }
 
     renderTitle() {
@@ -168,8 +203,29 @@ class Edit extends Component {
                                     />
                                 </div>
                             ))}
+                            <div
+                                className={styles.addOptionBtn}
+                                onClick={this.handleAddOption(questionIndex)}
+                            />
                         </div>
-                    ) : ('')}
+                    ) : (
+                        <div>
+                            <textarea
+                                value={question.content}
+                                className={styles.text}
+                                onChange={this.handleTextEdit(questionIndex, 0)}
+                            />
+                            <div className={classNames({
+                                    [styles.required]: question.isRequired,
+                                    [styles.notRequired]: !question.isRequired
+                                })}
+                                onClick={this.handleToggleRequire(questionIndex)}
+                            >
+                                <span>此题是否必填</span>
+                            </div>
+                        </div>
+                    )}
+                    
                 </div>
             ))
         );
@@ -218,7 +274,24 @@ class Edit extends Component {
                     </div>
                 </div>
                 <hr className={styles.line}/>
-                <div>foot</div>
+                <div className={styles.footer}>
+                    <div className={styles.dateWrap}>
+                        <span>问卷截止日期</span>
+                        {this.renderCalendar()}
+                    </div>
+                    <input type="button"
+                        ref="saveBtn"
+                        value="保存问卷"
+                        className={styles.btn}
+                        onClick={this.handleSaveQuestionnaire}
+                    />
+                    <input type="button"
+                        ref="releaseBtn"
+                        value="发布问卷"
+                        className={styles.btn}
+                        onClick={this.handleRealeaseQuestionnaire}
+                    />
+                </div>
             </div>
         );
     }

@@ -7,3 +7,6 @@ export const SAVE_TEXT = 'SAVE_TEXT';
 export const SHOW_TYPE = 'SHOW_TYPE';
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const REMOVE_OPTION = 'REMOVE_OPTION';
+export const TOGGLE_REQUIRE = 'TOGGLE_REQUIRE';
+export const ADD_OPTION = 'ADD_OPTION';
+export const SAVE_TIME = 'SAVE_TIME';
