@@ -42,6 +42,9 @@ class Edit extends Component {
         this.handleAddOption = this.handleAddOption.bind(this);
         this.handleSaveQuestionnaire = this.handleSaveQuestionnaire.bind(this);
         this.handleRealeaseQuestionnaire = this.handleRealeaseQuestionnaire.bind(this);
+        this.handleMoveQuestion = this.handleMoveQuestion.bind(this);
+        this.handleRemoveQuestion = this.handleRemoveQuestion.bind(this);
+        this.handleCopyQuestion = this.handleCopyQuestion.bind(this);
     }
 
     handleTextEdit(question, option, content) {
@@ -73,6 +76,24 @@ class Edit extends Component {
     handleAddOption(question) {
         const { addOption } = this.props.actions;
         return e => addOption(question);
+    }
+
+    handleMoveQuestion(index, step) {
+        // -1:上移    1:下移
+        debugger;
+        const { moveQuestion } = this.props.actions;
+        return e => moveQuestion(index, step);
+    }
+
+    handleRemoveQuestion(index) {
+        debugger;
+        const { removeQuestion } = this.props.actions;
+        return e => removeQuestion(index);
+    }
+
+    handleCopyQuestion(index) {
+        const { copyQuestion } = this.props.actions;
+        return e => copyQuestion(index);
     }
 
     handleSaveQuestionnaire() {
@@ -225,7 +246,32 @@ class Edit extends Component {
                             </div>
                         </div>
                     )}
-                    
+                    <div className={styles.operationWrap}>
+                        {questionIndex > 0 && (
+                            <div className={styles.operation}
+                                onClick={this.handleMoveQuestion(questionIndex, -1)}
+                            >
+                                <span>上移</span>
+                            </div>
+                        )}
+                        {questionIndex < last && (
+                            <div className={styles.operation}
+                                onClick={this.handleMoveQuestion(questionIndex, 1)}
+                            >
+                                <span>下移</span>
+                            </div>
+                        )}
+                        <div className={styles.operation}
+                            onClick={this.handleCopyQuestion(questionIndex)}
+                        >
+                            <span>复用</span>
+                        </div>
+                        <div className={styles.operation}
+                            onClick={this.handleRemoveQuestion(questionIndex)}
+                        >
+                            <span>删除</span>
+                        </div>
+                    </div>
                 </div>
             ))
         );

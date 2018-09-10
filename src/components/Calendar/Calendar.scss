@@ -1,6 +1,77 @@
 /*
  * @Author: YIM610 
  * @Date: 2018-08-27 14:51:30 
- * @Last Modified by:   YIM610 
- * @Last Modified time: 2018-08-27 14:51:30 
+ * @Last Modified by: YIM610
+ * @Last Modified time: 2018-08-30 17:51:14
  */
+
+@import '../../styles/variables.scss';
+@import '../../styles/util/size.scss';
+
+.date {
+    @include size(11em, 2em);
+    margin-left: 1em;
+    padding-left: 1em;
+    border: 1px solid $gray;
+    border-radius: .2em;
+    cursor: pointer;
+}
+
+.tableWrap {
+    position: absolute;
+    right: 0;
+    bottom: 2.25em;
+    border: 1px solid $gray;
+    z-index: $surface-z-index;
+    width: $calendar-width-base;
+    padding: .5em;
+    border-radius: .5em;
+    background: $white;
+    .table {
+        position: relative;
+        overflow: hidden;
+        border-collapse: separate;
+        color: $gray-darker;
+        user-select: none;
+        width: 100%;
+
+        .caption {
+            position: relative;
+            width: 10em;
+        }
+        .head,
+        .data {
+            border: 1px solid transparent;
+            text-align: center;
+        }
+        .head {
+            height: 2em;
+            border-bottom: 1px solid $gray-light;
+        }
+        .data:hover {
+            border: 1px silid $orange;
+            border-radius: .2em;
+            color: $white;
+            background: $orange linear-gradient(rgba(255, 255, 255, .2), transparent);
+        }
+        .nav {
+            position: absolute;
+            top: .375em;
+            border: .375em solid transparent;
+        }
+        .navRight {
+            left: .375em;
+            border-right: .625em solid $gray-darker;
+            &:hover {
+                border-right: .625em solid $orange;
+            }
+        }
+        .navLeft {
+            right: .375em;
+            border-left: .625em solid $gray-darker;
+            &:hover {
+                border-left: .625em solid $orange;
+            }
+        }
+    }
+ }

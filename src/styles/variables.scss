@@ -2,13 +2,14 @@
  * @Author: YIM610 
  * @Date: 2018-08-15 18:43:08 
  * @Last Modified by: YIM610
- * @Last Modified time: 2018-08-27 16:06:58
+ * @Last Modified time: 2018-08-28 14:49:27
  */
 
 $font-size-base: 20px;
 
 $background-z-index: -1;
 $mask-z-index: 1;
+$surface-z-index: 2;
 
 $small-page-max-width: 480px !default;
 $medium-page-max-width: 960px;
@@ -35,3 +36,5 @@ $edit-transition-timeout: .3s;
 
 $radio-option: '\e604';
 $checkbox-option: '\e605';
+
+$calendar-width-base: 280px;

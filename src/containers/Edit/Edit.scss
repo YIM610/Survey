@@ -2,7 +2,7 @@
  * @Author: YIM610 
  * @Date: 2018-08-17 14:09:32 
  * @Last Modified by: YIM610
- * @Last Modified time: 2018-08-27 18:10:31
+ * @Last Modified time: 2018-09-11 00:19:36
  */
 
  @import '../../styles/variables';
@@ -112,6 +112,9 @@
         padding: 1em 1.5em;
         &:hover {
             background: $orange-light;
+            .operationWrap {
+                visibility: visible;
+            }
         }
         .caption {
             font-weight: 700;
@@ -191,6 +194,18 @@
         .notRequired {
             &::before {
                 @include iconfont($checkbox-option, .8em, 1em);
+            }
+        }
+        .operationWrap {
+            visibility: hidden;
+            width: 100%;
+            text-align: right;
+            .operation {
+                display: inline-block;
+                margin-left: 1em;
+                &:hover {
+                    cursor: pointer; 
+                }
             }
         }
     }

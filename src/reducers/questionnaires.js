@@ -2,7 +2,7 @@
  * @Author: YIM610 
  * @Date: 2018-08-16 11:23:41 
  * @Last Modified by: YIM610
- * @Last Modified time: 2018-08-27 16:29:24
+ * @Last Modified time: 2018-09-11 00:10:34
  */
 
 import { handleActions } from 'redux-actions';
@@ -91,6 +91,25 @@ const initialEditing = {
         const { editing } = state;
         const { year, month, date } = action.payload;
         editing.time = new Date(year, month - 1, date).getTime();
+        return Object.assign({}, state, { editing });
+    },
+    [Types.REMOVE_QUESTION](state, action) {
+        const { editing } = state;
+        const index = action.payload;
+        editing.questions.splice(index, 1);
+        return Object.assign({}, state, { editing });
+    },
+    [Types.MOVE_QUESTION](state, action) {
+        const { editing } = state;
+        const { index, step } = action.payload;
+        debugger;
+        editing.questions.splice(index + step, 0, editing.questions.splice(index, 1)[0]);
+        return Object.assign({}, state, { editing });
+    },
+    [Types.COPY_QUESTION](state, action) {
+        const { editing } = state;
+        const index = action.payload;
+        editing.questions.splice(index, 0, editing.questions[index]);
         return Object.assign({}, state, { editing });
     }
  }, initialState);

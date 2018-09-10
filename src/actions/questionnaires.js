@@ -14,3 +14,6 @@ export const removeOption = createAction(Types.REMOVE_OPTION, (question, option)
 export const toggleRequire = createAction(Types.TOGGLE_REQUIRE, question => question);
 export const addOption = createAction(Types.ADD_OPTION, question => question);
 export const saveTime = createAction(Types.SAVE_TIME, (year, month, date) => ({year, month, date}));
+export const removeQuestion = createAction(Types.REMOVE_QUESTION, index => index);
+export const moveQuestion = createAction(Types.MOVE_QUESTION, (index, step) => ({index, step}));
+export const copyQuestion = createAction(Types.COPY_QUESTION, index => index);
